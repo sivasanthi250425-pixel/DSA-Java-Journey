@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+class Main {
+
+    static void max(long n) {
+        long c = 0;
+        long m = 0;
+
+        while (n > 0) {
+            long d = n % 10;
+           if(m<d){
+               m=d;
+           }           
+            n = n / 10;
+        }
+
+       System.out.println("Max:"+m);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+max(n);
+      
+    }
+}
