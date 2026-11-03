@@ -1,0 +1,26 @@
+
+
+import java.util.Scanner;
+
+class Main {
+
+    static void count(long n) {
+        long c = 0;
+    
+
+        while (n > 0) {
+            long d = n % 10;
+           c+=1;
+            n = n / 10;
+        }
+
+       System.out.println("Count:"+c);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+count(n);
+      
+    }
+}
