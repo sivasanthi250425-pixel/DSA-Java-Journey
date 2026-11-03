@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+class Main {
+
+    static boolean Armstrong(int n) {
+        int c = 0;
+        int t = 0;
+int o=n;
+        int p=String.valueOf(n).length();
+        while (n > 0) {
+            int d = n % 10;
+              t+=Math.pow(d,p);     
+            n = n / 10;
+        }
+        return o==t;
+
+       
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if(Armstrong(n)){
+            System.out.println("Armstrong");
+        }
+else{
+    System.out.println("Not Armstrong");
+}
+      
+    }
+}
