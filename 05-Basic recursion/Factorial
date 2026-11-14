@@ -1,0 +1,30 @@
+
+import java.util.*;
+
+class Main {
+
+    // Recursive method
+    static int fact(int n) {
+
+        // Base condition
+        if (n == 0) {
+            return 1;
+        }
+
+        // Recursive call
+        return n * fact(n - 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Input
+        int n = sc.nextInt();
+
+        // Output
+        System.out.println(fact(n));
+
+        sc.close();
+    }
+}
