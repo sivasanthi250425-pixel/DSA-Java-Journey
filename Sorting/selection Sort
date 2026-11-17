@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Solution {
+    public int[] selectionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int boundary = 0; boundary < n - 1; boundary++) {
+            int minIndex = boundary;
+
+            for (int current = boundary + 1; current < n; current++) {
+                if (arr[current] < arr[minIndex]) {
+                    minIndex = current;
+                }
+            }
+
+            if (minIndex != boundary) {
+                int temporary = arr[boundary];
+                arr[boundary] = arr[minIndex];
+                arr[minIndex] = temporary;
+            }
+        }
+
+        return arr;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {29, 10, 14, 37, 13};
+
+        Solution obj = new Solution();
+
+        int[] answer = obj.selectionSort(arr);
+        System.out.println(Arrays.toString(answer));
+    }
+}
