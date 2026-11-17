@@ -5,7 +5,7 @@ class Main {
 
     static void rev(long n) {
         long r = 0;
-        long o = n;
+       
 
         while (n > 0) {
             long d = n % 10;
