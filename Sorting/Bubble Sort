@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public int[] bubbleSort(int[] arr) {
+        int n = arr.length;
+
+        for (int pass = 0; pass < n - 1; pass++) {
+            for (int current = 0; current < n - pass - 1; current++) {
+                if (arr[current] > arr[current + 1]) {
+                    int temporary = arr[current];
+                    arr[current] = arr[current + 1];
+                    arr[current + 1] = temporary;
+                }
+            }
+        }
+
+        return arr;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {5, 1, 4, 2, 8};
+
+        Solution obj = new Solution();
+
+        int[] answer = obj.bubbleSort(arr);
+        System.out.println(Arrays.toString(answer));
+    }
+}
