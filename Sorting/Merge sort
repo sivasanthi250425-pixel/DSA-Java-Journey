@@ -1,0 +1,107 @@
+
+import java.util.*;
+
+class Solution {
+
+    // Step 1: Merge two sorted parts
+    private void merge(int[] arr, int left, int mid, int right) {
+
+        List<Integer> leftPart = new ArrayList<>();
+        List<Integer> rightPart = new ArrayList<>();
+
+        // Copy left half
+        for (int index = left; index <= mid; index++) {
+            leftPart.add(arr[index]);
+        }
+
+        // Copy right half
+        for (int index = mid + 1; index <= right; index++) {
+            rightPart.add(arr[index]);
+        }
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int writeIndex = left;
+
+        // Compare and merge
+        while (leftIndex < leftPart.size() &&
+               rightIndex < rightPart.size()) {
+
+            if (leftPart.get(leftIndex) <= rightPart.get(rightIndex)) {
+                arr[writeIndex] = leftPart.get(leftIndex);
+                leftIndex++;
+            } else {
+                arr[writeIndex] = rightPart.get(rightIndex);
+                rightIndex++;
+            }
+
+            writeIndex++;
+        }
+
+        // Copy remaining left elements
+        while (leftIndex < leftPart.size()) {
+            arr[writeIndex] = leftPart.get(leftIndex);
+            leftIndex++;
+            writeIndex++;
+        }
+
+        // Copy remaining right elements
+        while (rightIndex < rightPart.size()) {
+            arr[writeIndex] = rightPart.get(rightIndex);
+            rightIndex++;
+            writeIndex++;
+        }
+    }
+
+    // Step 2: Divide the array and recursively sort
+    private void mergeSortHelper(int[] arr, int left, int right) {
+
+        // Base condition
+        if (left >= right) {
+            return;
+        }
+
+        int mid = left + (right - left) / 2;
+
+        // Sort left half
+        mergeSortHelper(arr, left, mid);
+
+        // Sort right half
+        mergeSortHelper(arr, mid + 1, right);
+
+        // Merge both sorted halves
+        merge(arr, left, mid, right);
+    }
+
+    // Step 3: Main method to start Merge Sort
+    public int[] mergeSort(int[] arr) {
+
+        int n = arr.length;
+
+        if (n < 2) {
+            return arr;
+        }
+
+        mergeSortHelper(arr, 0, n - 1);
+
+        return arr;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {38, 27, 43, 10};
+
+        Solution obj = new Solution();
+
+        int[] answer = obj.mergeSort(arr);
+
+        for (int value : answer) {
+            System.out.print(value + " ");
+        }
+
+        System.out.println();
+    }
+}
