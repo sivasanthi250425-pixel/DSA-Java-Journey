@@ -1,0 +1,49 @@
+
+import java.util.*;
+
+class Solution {
+
+    public int[] insertionSort(int[] arr) {
+        sort(arr, arr.length);
+        return arr;
+    }
+
+    private void sort(int[] arr, int n) {
+
+        // Base case
+        if (n <= 1) {
+            return;
+        }
+
+        // Sort the first n-1 elements
+        sort(arr, n - 1);
+
+        // Store the last element as key
+        int key = arr[n - 1];
+
+        int position = n - 2;
+
+        // Shift larger elements to the right
+        while (position >= 0 && arr[position] > key) {
+            arr[position + 1] = arr[position];
+            position--;
+        }
+
+        // Insert key into correct position
+        arr[position + 1] = key;
+    }
+}
+
+// Driver code
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {12, 11, 13, 5, 6};
+
+        Solution obj = new Solution();
+
+        int[] answer = obj.insertionSort(arr);
+
+        System.out.println(Arrays.toString(answer));
+    }
+}
