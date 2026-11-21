@@ -1,0 +1,46 @@
+
+import java.util.*;
+
+class Solution {
+
+    public int[] bubbleSort(int[] arr) {
+        int n = arr.length;
+        sort(arr, n);
+        return arr;
+    }
+
+    private void sort(int[] arr, int n) {
+
+        // Base condition
+        if (n == 1) {
+            return;
+        }
+
+        // One pass of Bubble Sort
+        for (int current = 0; current < n - 1; current++) {
+
+            if (arr[current] > arr[current + 1]) {
+                int temporary = arr[current];
+                arr[current] = arr[current + 1];
+                arr[current + 1] = temporary;
+            }
+        }
+
+        // Recursive call for remaining elements
+        sort(arr, n - 1);
+    }
+}
+
+// Driver code
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 1, 4, 2, 8};
+
+        Solution obj = new Solution();
+
+        int[] answer = obj.bubbleSort(arr);
+
+        System.out.println(Arrays.toString(answer));
+    }
+}
